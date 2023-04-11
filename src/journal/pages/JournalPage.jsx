@@ -1,11 +1,11 @@
 import { Typography } from "@mui/material"
-import { MailOutline } from "@mui/icons-material"
+import { JournalLayout } from "../layout/JournalLayout"
 
 export const JournalPage = () => {
   return (
-    <>
-      <Typography variant='h3' >JournalPage</Typography>
-      <MailOutline />
-    </>
+    <JournalLayout>
+      <Typography >sdjhfglasudhgf lvzxcvzxcvzxvaskjdhf lksajdhf lasjkhf laskjhf pasihf df awef awef e f we,fw ef wef wef wef wef.wef wef dfg sdrg s.dfgosdfigjosdfg sdfjgh sdfg .sdfgu sd.fgudf gjdfhg m,ndioh gpergj</Typography>
+      
+    </JournalLayout >
   )
 }
