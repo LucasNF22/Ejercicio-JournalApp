@@ -4,18 +4,18 @@ import { ImageGallery } from "../copmonents/ImageGallery"
 
 export const NoteView = () => {
   return (
-    <Grid container direction={'row'} justifyContent={'space-between'}  alignItems={'center'} sx={{ mb: 1, backgroundColor: 'primary.light', borderRadius: 2, padding: 2, color: 'white' }} >
+    <Grid container direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{ mb: 1, backgroundColor: 'primary.light', borderRadius: 2, padding: 2, color: 'white' }} >
         <Grid item >
             <Typography fontSize={ 30 } fontWeight={'light'} > 28 de Agosto, 2023</Typography>
         </Grid>
-        <Grid item >
-            <Button color="primary" sx={{ padding: 2, color: 'white' }} >
+        <Grid item>
+            <Button color="primary" sx={{ padding: 2, color: 'white', mb: 1 }} >
                 <SaveAltOutlined sx={{ fontSize: 30, mr: 1 }} />
                 Guardar
             </Button>
         </Grid>
 
-        <Grid container >
+        <Grid container>
             <TextField
                 type='text'
                 variant="filled"
@@ -31,7 +31,7 @@ export const NoteView = () => {
                 multiline
                 fullWidth
                 placeholder="Haz tu anotación"
-                minRows={ 5 }
+                minRows={ 15 }
                 inputProps={{ style: { color: "white" } }}
                 sx={{ border: 'none', mb: 1 }}
             />      

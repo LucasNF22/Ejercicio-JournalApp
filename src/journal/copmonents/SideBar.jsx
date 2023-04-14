@@ -23,16 +23,16 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                 </Toolbar>
                 <Divider/>
 
-                <List>
+                <List  >
                     {
                         [ 'Enero', 'Febrero', 'Marzo', 'Abril' ].map( text => (
-                            <ListItem  key={text}>
-                                <ListItemButton>
-                                    <ListItemIcon>
+                            <ListItem  key={text} sx={{ padding: 0 }}>
+                                <ListItemButton sx={{ padding: 1, ml: 1, mr: 1, mb: 0.5 }} >
+                                    <ListItemIcon sx={{ minWidth: 35 }}>
                                         <TurnedInNot/>
                                     </ListItemIcon>
                                     <Grid container flexDirection={'column'}>
-                                        <ListItemText primary={ text } />
+                                        <ListItemText primary={ text } sx={{ mb: 0 }} />
                                         <ListItemText secondary={ 'bla bla bla bla bla' } />
                                     </Grid>
                                 </ListItemButton>
