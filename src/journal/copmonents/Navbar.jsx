@@ -23,7 +23,7 @@ export const Navbar = ({ drawerWidth = 240 }) => {
                 <Typography variant="h6" noWrap component='div' >JournalApp</Typography>
 
                 <IconButton color="error">
-                    <LogoutOutlined />
+                    <LogoutOutlined sx={{ color: 'secondary.main' }} />
                 </IconButton>
 
             </Grid>

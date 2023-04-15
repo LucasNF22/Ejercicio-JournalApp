@@ -39,8 +39,8 @@ export const NoteView = () => {
         </Grid>
 
         {/* Galeria de Imágenes */}
-        <ImageGallery />
-
+        <ImageGallery  />
+       
     </Grid>
   )
 }

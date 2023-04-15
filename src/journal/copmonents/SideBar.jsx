@@ -29,7 +29,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                             <ListItem  key={text} sx={{ padding: 0 }}>
                                 <ListItemButton sx={{ padding: 1, ml: 1, mr: 1, mb: 0.5 }} >
                                     <ListItemIcon sx={{ minWidth: 35 }}>
-                                        <TurnedInNot/>
+                                        <TurnedInNot sx={{ color: 'primary.main' }}/>
                                     </ListItemIcon>
                                     <Grid container flexDirection={'column'}>
                                         <ListItemText primary={ text } sx={{ mb: 0 }} />
