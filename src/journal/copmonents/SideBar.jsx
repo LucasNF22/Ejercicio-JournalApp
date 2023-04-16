@@ -6,17 +6,20 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
         <Box
             component={'nav'}
-            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+            sx={{ 
+                width: { sm: drawerWidth }, 
+                flexShrink: { sm: 0 },                 
+            }}
         >
             <Drawer
                 variant='permanent'
                 open
                 sx={{
                     display: { xs: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#0e0e0e0e', },                    
                 }}
             >
-                <Toolbar>
+                <Toolbar >
                     <Typography variant='h6' noWrap component={'div'} >
                         Lucas Fiorentino
                     </Typography>
