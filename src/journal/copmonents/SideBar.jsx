@@ -15,8 +15,9 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                 variant='permanent'
                 open
                 sx={{
-                    display: { xs: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#0e0e0e0e', },                    
+                    display: { xs: 'none', sm: 'block' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#0e0e0e0e', },
+                    // opacity: {xs: 0, sm: 1}                 
                 }}
             >
                 <Toolbar >
