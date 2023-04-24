@@ -8,7 +8,8 @@ export const SideBar = ({ drawerWidth = 240 }) => {
             component={'nav'}
             sx={{ 
                 width: { sm: drawerWidth }, 
-                flexShrink: { sm: 0 },                 
+                flexShrink: { sm: 0 }, 
+                               
             }}
         >
             <Drawer
@@ -16,8 +17,9 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                 open
                 sx={{
                     display: { xs: 'none', sm: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#0e0e0e0e', },
-                    // opacity: {xs: 0, sm: 1}                 
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#0e0e0e0e' },
+                    // opacity: {xs: 0, sm: 1} 
+                                    
                 }}
             >
                 <Toolbar >
