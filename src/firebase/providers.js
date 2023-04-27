@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { FireBaseAuth } from "./config";
 
 const googleProvider = new GoogleAuthProvider();
@@ -65,6 +65,40 @@ export const registerUserWithEmailPassword = async ({ email, password, displayNa
         // The email of the user's account used.
         const email = error.customData.email;
         // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);     
+
+        return{
+            ok: false,
+            errorCode,
+            errorMessage,
+            email,
+            credential
+        };
+    };
+};
+
+export const loginWithEmailPassword = async ({ email, password })=> {
+    try {
+        const result = await signInWithEmailAndPassword( FireBaseAuth, email, password );
+        
+        const { displayName, photoURL, uid } = result.user;
+
+    
+        return{
+            ok: true,
+            // INfo del usuario
+            displayName, photoURL, uid
+        }
+
+
+    }catch ( error ){
+        
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
 
         return{
@@ -74,5 +108,6 @@ export const registerUserWithEmailPassword = async ({ email, password, displayNa
             email,
             credential
         };
-    }
+    };
+
 }
