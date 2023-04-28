@@ -10,6 +10,7 @@ export const signInWithGoogle = async () => {
         // const credentials = GoogleAuthProvider.credentialFromResult( result );
         const { displayName, email, photoURL, uid } = result.user;
 
+        console.log(photoURL);
         return{
             ok: true,
             // INfo del usuario
@@ -22,8 +23,6 @@ export const signInWithGoogle = async () => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
 
@@ -31,7 +30,6 @@ export const signInWithGoogle = async () => {
             ok: false,
             errorCode,
             errorMessage,
-            email,
             credential
         };
     };
