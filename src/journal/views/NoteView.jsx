@@ -4,7 +4,15 @@ import { ImageGallery } from "../copmonents/ImageGallery"
 
 export const NoteView = () => {
   return (
-    <Grid container direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{ mb: 1, backgroundColor: 'primary.light', borderRadius: 2, padding: 2, color: 'white' }} >
+    <Grid 
+        container 
+        direction={'row'} 
+        justifyContent={'space-between'} 
+        alignItems={'center'} 
+        sx={{ mb: 1, backgroundColor: 'primary.light', borderRadius: 2, padding: 2, color: 'white' }} 
+        className="animate__animated animate__pulse animate__faster"
+    >
+        
         <Grid item >
             <Typography fontSize={ 30 } fontWeight={'light'} > 28 de Agosto, 2023</Typography>
         </Grid>

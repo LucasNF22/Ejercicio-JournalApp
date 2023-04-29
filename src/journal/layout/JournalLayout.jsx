@@ -6,19 +6,22 @@ const drawerWidth = 220;
 
 export const JournalLayout = ({ children }) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box 
+      sx={{ display: 'flex' }}
+      className="animate__animated animate__fadeIn animate__faster"
+    >
         
         <Navbar drawerWidth={ drawerWidth } />
         
         <SideBar drawerWidth={ drawerWidth } />
         
         <Box
-            component='main'
-            sx={{ flexGrow: 1, p: 1.5 }}
+          component='main'
+          sx={{ flexGrow: 1, p: 1.5 }}
         >
-            <Toolbar/>
+          <Toolbar/>
 
-            { children }
+          { children }
 
         </Box>
     </Box>
