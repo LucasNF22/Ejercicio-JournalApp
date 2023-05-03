@@ -1,6 +1,6 @@
-import { TurnedInNot } from '@mui/icons-material'
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material'
+import { SideBarItem } from './SideBarItem';
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 
@@ -37,23 +37,12 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                 <List  >
                     {
                         notes.map( note => (
-                            <ListItem  key={ note.id } sx={{ padding: 0 }}>
-                                <ListItemButton sx={{ padding: 1, ml: 1, mr: 1, mb: 0.5 }} >
-                                    <ListItemIcon sx={{ minWidth: 35 }}>
-                                        <TurnedInNot sx={{ color: 'primary.main' }}/>
-                                    </ListItemIcon>
-                                    <Grid container flexDirection={'column'}>
-                                        <ListItemText primary={ note.title } sx={{ mb: 0 }} />
-                                        <ListItemText secondary={ note.body } />
-                                    </Grid>
-                                </ListItemButton>
-                            </ListItem>
-                        ) ) 
+                            <SideBarItem { ...note } key={ note.id }/>
+                        )) 
                     }
                 </List>
                 
             </Drawer>
-
         </Box>
 
     )
