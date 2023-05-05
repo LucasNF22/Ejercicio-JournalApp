@@ -1,17 +1,21 @@
-import { useEffect, useMemo } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { setActiveNote } from "../../store/journal/journalSlice"
-import { SaveAltOutlined } from "@mui/icons-material"
-import { Button, Grid, TextField, Typography } from "@mui/material"
-import { ImageGallery } from "../copmonents/ImageGallery"
-import { useForm } from "../../hooks/useForm"
-import { startSaveNote } from "../../store/journal/thunks"
+import { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setActiveNote } from "../../store/journal/journalSlice";
+import { SaveAltOutlined } from "@mui/icons-material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
+import Swal from "sweetalert2";
+import 'sweetalert2/dist/sweetalert2.css';
+
+import { ImageGallery } from "../components/ImageGallery";
+import { useForm } from "../../hooks/useForm";
+import { startSaveNote } from "../../store/journal/thunks";
 
 export const NoteView = ({ note }) => {
 
     const dispatch = useDispatch();
 
-    const { activeNote } = useSelector( state => state.journal );
+    const { activeNote, messageSaved, isSaving } = useSelector( state => state.journal );
 
     const { body, title, date, onInputChange, formState } = useForm( activeNote );
 
@@ -24,9 +28,24 @@ export const NoteView = ({ note }) => {
         dispatch( setActiveNote(formState) );
     }, [formState]);
 
+    useEffect(() => {
+        if( messageSaved.length > 0 ) {
+            Swal.fire({
+                title: 'Nota Actualizada', 
+                text: `${messageSaved}`, 
+                icon: 'success',
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end',
+                timer: 2000,
+                padding: "5px 5px 5px 20px"
+            })
+        }
+    }, [messageSaved]);
+
     const onSaveNote = () => {
         dispatch( startSaveNote() )
-    }
+    };
     
     
     return (
@@ -44,6 +63,7 @@ export const NoteView = ({ note }) => {
             </Grid>
             <Grid item>
                 <Button 
+                    disabled={isSaving}
                     onClick={ onSaveNote }
                     color="primary" 
                     sx={{ padding: 2, color: 'white', mb: 1 }} 
