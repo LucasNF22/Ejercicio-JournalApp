@@ -5,6 +5,7 @@ import { SaveAltOutlined } from "@mui/icons-material"
 import { Button, Grid, TextField, Typography } from "@mui/material"
 import { ImageGallery } from "../copmonents/ImageGallery"
 import { useForm } from "../../hooks/useForm"
+import { startSaveNote } from "../../store/journal/thunks"
 
 export const NoteView = ({ note }) => {
 
@@ -21,7 +22,11 @@ export const NoteView = ({ note }) => {
 
     useEffect(() => {
         dispatch( setActiveNote(formState) );
-    }, [formState])
+    }, [formState]);
+
+    const onSaveNote = () => {
+        dispatch( startSaveNote() )
+    }
     
     
     return (
@@ -39,6 +44,7 @@ export const NoteView = ({ note }) => {
             </Grid>
             <Grid item>
                 <Button 
+                    onClick={ onSaveNote }
                     color="primary" 
                     sx={{ padding: 2, color: 'white', mb: 1 }} 
                 >
