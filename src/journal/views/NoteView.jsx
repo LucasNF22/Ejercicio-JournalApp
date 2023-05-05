@@ -1,9 +1,9 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setActiveNote } from "../../store/journal/journalSlice";
-import { SaveAltOutlined } from "@mui/icons-material";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { SaveAltOutlined, UploadOutlined } from "@mui/icons-material";
+import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
 import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.css';
 
@@ -23,6 +23,8 @@ export const NoteView = ({ note }) => {
         const newDate = new Date( date );
         return newDate.toUTCString();
     }, [date] );
+
+    const fileInputRef = useRef()
 
     useEffect(() => {
         dispatch( setActiveNote(formState) );
@@ -46,6 +48,12 @@ export const NoteView = ({ note }) => {
     const onSaveNote = () => {
         dispatch( startSaveNote() )
     };
+
+    const onFileInputChange = ({ target }) => {
+        if( target.files === 0 ) return;
+
+        dispatch( /*startUploadingFiles( target.files )*/ 'uploading files' )
+    }
     
     
     return (
@@ -62,6 +70,23 @@ export const NoteView = ({ note }) => {
                 <Typography fontSize={ 30 } fontWeight={'light'} >{ dateString }</Typography>
             </Grid>
             <Grid item>
+
+                <input 
+                    type="file"
+                    multiple
+                    ref={ fileInputRef }
+                    onChange={ onFileInputChange }
+                    style={{ display: 'none' }}
+                />
+
+                <IconButton
+                    sx={{ color: 'white' }}
+                    disabled={ isSaving }
+                    onClick={ () => fileInputRef.current.click() }
+                >
+                    <UploadOutlined/>
+                </IconButton>
+
                 <Button 
                     disabled={isSaving}
                     onClick={ onSaveNote }
