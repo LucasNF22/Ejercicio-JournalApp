@@ -9,7 +9,7 @@ import 'sweetalert2/dist/sweetalert2.css';
 
 import { ImageGallery } from "../components/ImageGallery";
 import { useForm } from "../../hooks/useForm";
-import { startSaveNote } from "../../store/journal/thunks";
+import { startSaveNote, startUploadingFiles } from "../../store/journal/thunks";
 
 export const NoteView = ({ note }) => {
 
@@ -52,7 +52,7 @@ export const NoteView = ({ note }) => {
     const onFileInputChange = ({ target }) => {
         if( target.files === 0 ) return;
 
-        dispatch( /*startUploadingFiles( target.files )*/ 'uploading files' )
+        dispatch( startUploadingFiles( target.files ) )
     }
     
     
