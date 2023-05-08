@@ -2,14 +2,14 @@ import { useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setActiveNote } from "../../store/journal/journalSlice";
-import { SaveAltOutlined, UploadOutlined } from "@mui/icons-material";
+import { DeleteOutline, SaveAltOutlined, UploadOutlined } from "@mui/icons-material";
 import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
 import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.css';
 
 import { ImageGallery } from "../components/ImageGallery";
 import { useForm } from "../../hooks/useForm";
-import { startSaveNote, startUploadingFiles } from "../../store/journal/thunks";
+import { startDeletingNote, startSaveNote, startUploadingFiles } from "../../store/journal/thunks";
 
 export const NoteView = ({ note }) => {
 
@@ -17,7 +17,7 @@ export const NoteView = ({ note }) => {
 
     const { activeNote, messageSaved, isSaving } = useSelector( state => state.journal );
 
-    const { body, title, date, onInputChange, formState } = useForm( activeNote );
+    const { body, title, date, onInputChange, formState, imageUrls } = useForm( activeNote );
 
     const dateString = useMemo( () => {
         const newDate = new Date( date );
@@ -53,7 +53,11 @@ export const NoteView = ({ note }) => {
         if( target.files === 0 ) return;
 
         dispatch( startUploadingFiles( target.files ) )
-    }
+    };
+
+    const onDelete = () => {
+        dispatch( startDeletingNote() );
+    };
     
     
     return (
@@ -116,7 +120,7 @@ export const NoteView = ({ note }) => {
                     multiline
                     fullWidth
                     placeholder="Haz tu anotación"
-                    minRows={ 15 }
+                    minRows={ 10 }
                     inputProps={{ style: { color: "white" } }}
                     sx={{ border: 'none', mb: 1 }}
                     name="body"
@@ -127,7 +131,18 @@ export const NoteView = ({ note }) => {
             </Grid>
 
             {/* Galeria de Imágenes */}
-            <ImageGallery  />
+            <ImageGallery images={ imageUrls } />
+
+            <Grid container justifyContent={'start'}>
+                <Button
+                    onClick={ onDelete }
+                    sx={{ mt: 2 }}
+                    color="secondary"
+                >
+                    <DeleteOutline  />
+                    Borrar
+                </Button>
+            </Grid>
 
         </Grid>
     )
