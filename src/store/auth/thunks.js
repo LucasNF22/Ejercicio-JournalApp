@@ -12,10 +12,10 @@ export const checkingAuthentication = ( email, password ) => {
 export const startGoogleSignIn = () => {
     return async( dispatch ) => {
 
-        dispatch( checkingAuthentication() );
+        dispatch( checkingCredentials() );
 
         const result = await signInWithGoogle();
-
+        // console.log({result});
         // console.log( result.errorMessage );
 
         if( !result.ok ) return dispatch( logout( result.errorMessage ) );
