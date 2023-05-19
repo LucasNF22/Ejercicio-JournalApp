@@ -28,7 +28,7 @@ describe('Pruebas en FileUpload', () => {
         const segments = url.split('/')
         
         const imageId = segments[ segments.length -1 ].replace( '.png', '' );
-        console.log(imageId);
+        // console.log(imageId);
 
         const respCloudinary = await cloudinary.api.delete_resources([ 'journal/' + imageId ], {
             resource_type: 'image',
