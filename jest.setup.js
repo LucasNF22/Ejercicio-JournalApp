@@ -1,7 +1,7 @@
 // En caso de necesitar la implementación del FetchAPI
 import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
 import 'setimmediate';
-import { getEnvironments } from './src/helpers';
+
 
 require('dotenv').config({
     path: '.env.test'
