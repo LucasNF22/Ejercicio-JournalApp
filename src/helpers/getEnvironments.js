@@ -8,7 +8,8 @@ export const getEnvironments = () => {
     // }
 
     return {
-        define: {
+      define: {   
+        ...import.meta.env,
           __APP_ENV__: process.env.VITE_VERCEL_ENV,
         },
       };
