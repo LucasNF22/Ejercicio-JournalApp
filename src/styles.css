@@ -3,3 +3,17 @@
 
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
+.main-title{
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.main-p{
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 40px;
+}

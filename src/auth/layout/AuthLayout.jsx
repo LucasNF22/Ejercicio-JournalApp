@@ -10,7 +10,17 @@ export const AuthLayout = ({ children, title= '' }) => {
       alignItems="center"
       justifyContent="center"
       sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
-    >
+      >
+        <div
+          container
+          spacing={ 0 }  
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <h1 className='main-title'>JournalApp</h1>
+          <p className='main-p'>¡Tu app de notas!</p>
+        </div>
       <Grid 
           item
           className="box-shadow animate__animated animate__pulse animate__faster"
@@ -23,7 +33,6 @@ export const AuthLayout = ({ children, title= '' }) => {
           }}
       >
         <Typography variant="h5" sx={{ mb: 1 }} >{ title }</Typography>
-    
       {/* Childrens */}
       { children }
 
